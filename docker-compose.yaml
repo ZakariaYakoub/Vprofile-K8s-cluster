@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  vprodb:
+    image: zikou/vprofile:db
+    ports:
+      - "3306:3306"
+    volumes:
+      - vprodata:/var/lib/mysql
+
+  vpromc:
+    image: memcached
+    ports:
+      - "11211:11211"
+
+  vprormq:
+    image: rabbitmq
+    ports:
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  vproapp:
+    image: zikou/vprofile:app
+    ports:
+      - "8080:8080"
+      
+
+
+volumes:
+  vprodata: {}

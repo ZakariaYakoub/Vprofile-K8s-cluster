@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 services:
   vprodb:
     image: zikou/vprofile:db
@@ -24,7 +24,7 @@ services:
     image: zikou/vprofile:app
     ports:
       - "8080:8080"
-      
+
 
 
 volumes:
